@@ -18,7 +18,11 @@ def server_error():
 def home():
     with open("res.txt","r") as f:
         ad = f.read()
-        return redirect("https://"+ad)
+        pig = requests.get(f"https://"+ad).text
+        if "offline" in pig:
+            return "Server is Offline!"
+        else:
+            return redirect("https://"+ad)
 
 @app.route("/change/<ip>/<passs>")
 def change(ip,passs):
