@@ -1,8 +1,10 @@
 from flask import Flask,redirect,jsonify
 import requests
 import psycopg2
+import os
 
-DATABASE_URL = "postgresql://data_store_7lzv_user:0xZ0gSg6Lp6bcG15g9XkRFL1mjZLT161@dpg-d3ekj2r3fgac7389ua2g-a.oregon-postgres.render.com:5432/data_store_7lzv"
+# Render automatically loads environment variables
+DATABASE_URL = os.environ.get('DATABASE_URL')
 
 
 conn = psycopg2.connect(DATABASE_URL)
